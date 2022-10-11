@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <h1>Uživatelé</h1>
+
+    <div class="zalozeni"><a href={% url "ZalozUzivatele" %} class="vytvor">Vytvořit uživatele</a></div>
+    
+    {% if uzivatele == None %}
+    <strong>Žádní uživatelé</strong>
+    {% endif %}
+    
+    {% for i in uzivatele %}
+    <div class="uzivatele">
+        {{i}}
+        <a href={% url "DetailUzivatele" i.id %} class="zobraz">Zobrazit</a>
+    </div>
+    {% endfor %}
+
+{% endblock %}

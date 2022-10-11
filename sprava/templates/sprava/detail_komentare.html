@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Detail komentáře - {{komentar.uzivatel}}</h1>
+<h2>Obsah:</h2>
+<br>
+{{komentar.obsah}}
+<form method="POST">
+    {% csrf_token %}
+<div class="tlacitka"><button name="upravit" class="edit">Upravit komentář</button> <button name="smazat" class="smaz">Smazat komentář</button><button name="zpet" class="zpet">Uživatel</button></div>
+</form>
+{% endblock %}

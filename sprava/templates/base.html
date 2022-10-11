@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <title>Správa uživatelů</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href={% url "index" %} class="nav_tlacitka">Uživatelé</a></li>
+            <li><a href={% url "Komentare" %} class="nav_tlacitka">Komentáře</a></li>
+            <li><a href={% url "API" %} class="nav_tlacitka">Externí API</a></li>
+        </ul>
+    </nav>
+
+    {% if messages %}
+    {% for message in messages %}
+    <br>
+    {% if message.tags == "info" %}
+    <h2 style="color: black; background-color: rgb(213, 255, 151);">{{message}}</h2>
+    {% endif %}
+    {% if message.tags == "error" %}
+    <h2 style="color: black; background-color:rgb(255, 175, 175);">{{message}}</h2>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    <div class="content">
+    {% block content %}
+
+    {% endblock %}
+    </div>
+</body>
+</html>

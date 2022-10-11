@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{nadpis}} {{uzivatel}}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+<div class="form">
+<h2>Jméno:</h2>
+{{form.jmeno}}
+<br>
+<h2>Datum narození:</h2>
+Formát: Rok-Měsíc-Den
+{{form.datum_narozeni}}
+<br>
+<button class="uloz" type="submit">Uložit</button>
+</form>
+</div>
+{% endblock %}

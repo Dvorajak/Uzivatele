@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Detail - {{uzivatel.jmeno}}</h1>
+<h2>Jméno: {{uzivatel.jmeno}}</h2>
+<h2>Datum narození: {{datum}}</h2>
+<form method="POST">
+    {% csrf_token %}
+    <div class="tlacitka"><button name="upravit" class="edit">Upravit uživatele</button> <button name="smazat" class="smaz">Smazat uživatele</button></div>
+    <hr>
+    <h2>Komentáře:</h2>
+    <div class="zalozeni"><button name="pridat_komentar" class="vytvor">Přidat komentář</button></div>
+    {% if list == None %}
+    <strong>Žádné komentáře</strong>
+    {% endif %}
+    {% for i in list %}
+    <div class="uzivatele">
+        <div class="zarovnani">{{i.obsah}}</div>
+        {{i.datum}}
+        <a href={% url "DetailKomentare" i.id %} class="zobraz">Zobrazit</a>
+    </div>
+    {% endfor %}
+</form>
+
+{% endblock %}

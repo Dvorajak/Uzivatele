@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <h1>Komentáře</h1>
+
+    {% if komentare == None %}
+    <strong>Žádné komentáře</strong>
+    {% endif %}
+
+    {% for i in komentare %}
+    <div class="uzivatele">
+        <div class="zarovnani">{{i.uzivatel}}</div>
+        {{i.obsah}}
+        <a href={% url "DetailKomentare" i.id %} class="zobraz">Zobrazit</a>
+    </div>
+    {% endfor %}
+
+{% endblock %}
